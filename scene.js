@@ -1,4 +1,4 @@
-// PulsePilot download page - 3D "journey" background.
+// PulsePilots download page - 3D "journey" background.
 // A glowing particle landscape you fly through; scrolling moves the camera
 // forward and shifts the colours chapter by chapter. Floating orbs are the
 // "posts" travelling out into the world.

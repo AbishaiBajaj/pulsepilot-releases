@@ -1,4 +1,4 @@
-# Publishes the download page (index.html + its 3D background) to GitHub Pages.
+# Publishes the PulsePilots download page (index.html + its 3D background) to GitHub Pages.
 name: Deploy download page
 
 on:
