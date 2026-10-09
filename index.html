@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PulsePilot - Download</title>
+    <meta name="description" content="PulsePilot is your AI marketing co-pilot: create, schedule and publish to every network, track what people say about you, and grow with AI." />
+    <style>
+      :root {
+        --bg: #faf9fc; --fg: #17141f; --muted: #5d5869; --card: #fff; --line: #e8e5ef;
+        --brand: #7c3aed; --brand-2: #c026d3;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #0c0a10; --fg: #f3f1f7; --muted: #a39fae; --card: #16131c; --line: #27232f; }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--fg); font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif; line-height: 1.55; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+      header { padding: 28px 0; display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; }
+      .logo { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; color: #fff; font-size: 18px; }
+      .hero { text-align: center; padding: 48px 0 32px; }
+      h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 14px; }
+      .lead { color: var(--muted); font-size: 18px; max-width: 640px; margin: 0 auto 28px; }
+      .btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand); color: #fff; text-decoration: none; font-weight: 600; padding: 14px 26px; border-radius: 12px; font-size: 16px; box-shadow: 0 8px 24px rgba(124, 58, 237, .25); }
+      .btn:hover { filter: brightness(1.08); }
+      .other { margin-top: 14px; font-size: 14px; color: var(--muted); }
+      .other a { color: var(--brand); }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 40px 0; }
+      .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+      .card h3 { margin: 0 0 6px; font-size: 16px; }
+      .card p { margin: 0; color: var(--muted); font-size: 14px; }
+      .downloads { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 18px; margin: 24px 0 40px; }
+      .row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+      .row:last-child { border-bottom: 0; }
+      .row a { color: var(--brand); font-weight: 600; text-decoration: none; }
+      .note { font-size: 13px; color: var(--muted); }
+      footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; text-align: center; }
+      footer a { color: inherit; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header><div class="logo">✦</div> PulsePilot</header>
+      <section class="hero">
+        <h1>Your AI marketing co-pilot</h1>
+        <p class="lead">Write and schedule posts for every network in minutes, see what people say about your brand and competitors, and get AI-picked ideas that grow your audience.</p>
+        <a id="primary" class="btn" href="#downloads">Download PulsePilot</a>
+        <div class="other" id="primary-note">Free to download · Windows, Mac &amp; Linux</div>
+      </section>
+
+      <section class="grid">
+        <div class="card"><h3>Create &amp; schedule</h3><p>AI writes platform-perfect posts and images that show your real product. Publish now or schedule.</p></div>
+        <div class="card"><h3>Mentions &amp; trends</h3><p>Track your brand and competitors across news, Reddit, Bluesky and more - only the posts that matter.</p></div>
+        <div class="card"><h3>Grow with AI</h3><p>Find viral post ideas from your best performers and what's trending right now.</p></div>
+        <div class="card"><h3>Your blog too</h3><p>Generate SEO articles and publish straight to WordPress, Shopify, Webflow and more.</p></div>
+      </section>
+
+      <section class="downloads" id="downloads">
+        <div class="row"><span><b>Windows</b> 10 / 11 (64-bit)</span><a data-file="PulsePilot-Setup-x64.exe" href="#">Download .exe</a></div>
+        <div class="row"><span><b>Mac</b> with Apple chip (M1 or newer)</span><a data-file="PulsePilot-mac-arm64.dmg" href="#">Download .dmg</a></div>
+        <div class="row"><span><b>Mac</b> with Intel chip</span><a data-file="PulsePilot-mac-x64.dmg" href="#">Download .dmg</a></div>
+        <div class="row"><span><b>Linux</b> (AppImage)</span><a data-file="PulsePilot-linux.AppImage" href="#">Download .AppImage</a></div>
+        <div class="row note">PulsePilot updates itself automatically. Your data, posts and API keys stay on your computer.</div>
+      </section>
+
+      <footer>
+        © 2026 Automatorr · <a href="https://automatorr.com/privacy">Privacy</a> · <a href="https://automatorr.com/terms">Terms</a> · <a href="mailto:support@automatorr.com">Support</a>
+      </footer>
+    </div>
+
+    <script>
+      // CHANGE these to your GitHub releases repository (same as electron-builder.yml "publish").
+      var OWNER = 'AbishaiBajaj'
+      var REPO = 'pulsepilot-releases'
+      var base = 'https://github.com/' + OWNER + '/' + REPO + '/releases/latest/download/'
+      document.querySelectorAll('a[data-file]').forEach(function (a) { a.href = base + a.getAttribute('data-file') })
+
+      // Point the big button at the right installer for this computer.
+      var ua = navigator.userAgent
+      var file = null, label = null
+      if (/Windows/i.test(ua)) { file = 'PulsePilot-Setup-x64.exe'; label = 'Download for Windows' }
+      else if (/Macintosh|Mac OS X/i.test(ua)) { file = 'PulsePilot-mac-arm64.dmg'; label = 'Download for Mac' }
+      else if (/Linux/i.test(ua) && !/Android/i.test(ua)) { file = 'PulsePilot-linux.AppImage'; label = 'Download for Linux' }
+      if (file) {
+        var btn = document.getElementById('primary')
+        btn.href = base + file
+        btn.textContent = label
+        document.getElementById('primary-note').innerHTML = 'Free · <a href="#downloads">Other systems &amp; Intel Mac</a>'
+      }
+    </script>
+  </body>
+</html>
