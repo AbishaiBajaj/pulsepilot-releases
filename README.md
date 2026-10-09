@@ -2,7 +2,7 @@
 
 Your AI marketing co-pilot. Create, schedule and publish posts for every network, track what people say about your brand and competitors, and get AI-picked ideas to grow your audience.
 
-**[Download PulsePilots](https://abishaibajaj.github.io/pulsepilot-releases/)**
+**[Download PulsePilots](https://pulsepilots.com)**
 
 | Computer | Download |
 |---|---|
