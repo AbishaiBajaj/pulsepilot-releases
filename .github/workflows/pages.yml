@@ -1,4 +1,4 @@
-# Publishes the download page (index.html) to GitHub Pages.
+# Publishes the download page (index.html + its 3D background) to GitHub Pages.
 name: Deploy download page
 
 on:
@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Collect site files
-        run: mkdir site && cp index.html site/ && touch site/.nojekyll
+        run: mkdir site && cp index.html scene.js site/ && cp -r vendor site/ && touch site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

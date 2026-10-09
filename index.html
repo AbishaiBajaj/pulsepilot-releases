@@ -3,90 +3,333 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PulsePilot - Download</title>
-    <meta name="description" content="PulsePilot is your AI marketing co-pilot: create, schedule and publish to every network, track what people say about you, and grow with AI." />
+    <title>PulsePilot - Your AI marketing co-pilot</title>
+    <meta name="description" content="Write, schedule and publish to every network, hear what people say about your brand, and grow with AI. Free download for Windows, Mac and Linux." />
+    <meta property="og:title" content="PulsePilot - Your AI marketing co-pilot" />
+    <meta property="og:description" content="Write once, post everywhere, hear every conversation and grow with AI. Free for Windows, Mac and Linux." />
+    <meta name="theme-color" content="#07060d" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%23d946ef'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M5 17h5l3-8 5 14 3-6h6' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --bg: #faf9fc; --fg: #17141f; --muted: #5d5869; --card: #fff; --line: #e8e5ef;
-        --brand: #7c3aed; --brand-2: #c026d3;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root { --bg: #0c0a10; --fg: #f3f1f7; --muted: #a39fae; --card: #16131c; --line: #27232f; }
+        --bg: #07060d;
+        --fg: #f4f2fa;
+        --muted: #b3aec4;
+        --faint: #8a859d;
+        --glass: rgba(20, 16, 34, 0.55);
+        --glass-line: rgba(255, 255, 255, 0.09);
+        --brand: #a78bfa;
+        --accent: #22d3ee;
       }
       * { box-sizing: border-box; }
-      body { margin: 0; background: var(--bg); color: var(--fg); font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif; line-height: 1.55; }
-      .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
-      header { padding: 28px 0; display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; }
-      .logo { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; color: #fff; font-size: 18px; }
-      .hero { text-align: center; padding: 48px 0 32px; }
-      h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 14px; }
-      .lead { color: var(--muted); font-size: 18px; max-width: 640px; margin: 0 auto 28px; }
-      .btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand); color: #fff; text-decoration: none; font-weight: 600; padding: 14px 26px; border-radius: 12px; font-size: 16px; box-shadow: 0 8px 24px rgba(124, 58, 237, .25); }
-      .btn:hover { filter: brightness(1.08); }
-      .other { margin-top: 14px; font-size: 14px; color: var(--muted); }
-      .other a { color: var(--brand); }
-      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 40px 0; }
-      .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
-      .card h3 { margin: 0 0 6px; font-size: 16px; }
-      .card p { margin: 0; color: var(--muted); font-size: 14px; }
-      .downloads { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 18px; margin: 24px 0 40px; }
-      .row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
-      .row:last-child { border-bottom: 0; }
-      .row a { color: var(--brand); font-weight: 600; text-decoration: none; }
-      .note { font-size: 13px; color: var(--muted); }
-      footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; text-align: center; }
-      footer a { color: inherit; }
+      html { scroll-behavior: smooth; background: var(--bg); }
+      body {
+        margin: 0;
+        background: radial-gradient(120% 80% at 50% -10%, #1d1335 0%, var(--bg) 55%) fixed, var(--bg);
+        color: var(--fg);
+        font: 400 16px/1.6 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif; letter-spacing: -0.02em; }
+      a { color: inherit; }
+
+      /* 3D background */
+      #scene { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; z-index: 0; opacity: 0; transition: opacity 1.6s ease; }
+      html.webgl-ready #scene { opacity: 1; }
+      html.no-webgl #scene { display: none; }
+      html.no-webgl body {
+        background: radial-gradient(60% 50% at 20% 30%, #3b1d6e 0%, transparent 70%),
+          radial-gradient(50% 40% at 80% 70%, #0e4a5c 0%, transparent 70%), var(--bg);
+        background-attachment: fixed;
+      }
+      .veil { position: fixed; inset: 0; z-index: 1; pointer-events: none;
+        background: linear-gradient(180deg, rgba(7,6,13,.45) 0%, rgba(7,6,13,0) 26%, rgba(7,6,13,0) 75%, rgba(7,6,13,.45) 100%); }
+
+      main, footer { position: relative; z-index: 2; }
+      .wrap { width: min(1120px, 100% - 32px); margin: 0 auto; }
+
+      /* Top bar */
+      header { position: fixed; top: 0; left: 0; right: 0; z-index: 10; background: linear-gradient(rgba(7,6,13,.75), rgba(7,6,13,0)); }
+      .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+      .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-family: 'Space Grotesk', sans-serif; font-size: 19px; text-decoration: none; }
+      .logo-mark { width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center;
+        background: linear-gradient(135deg, #7c3aed, #d946ef); box-shadow: 0 0 24px rgba(168, 85, 247, .55); }
+      .logo-mark svg { width: 20px; height: 20px; }
+      .nav .btn { padding: 9px 16px; font-size: 14px; }
+
+      /* Buttons */
+      .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; border-radius: 12px;
+        padding: 14px 24px; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; cursor: pointer; border: 0; font-size: 16px; }
+      .btn-primary { color: #fff; background: linear-gradient(135deg, #7c3aed, #c026d3); box-shadow: 0 10px 40px rgba(168, 85, 247, .45), inset 0 1px 0 rgba(255,255,255,.25); }
+      .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 50px rgba(192, 38, 211, .55), inset 0 1px 0 rgba(255,255,255,.25); }
+      .btn-ghost { color: var(--fg); background: rgba(255,255,255,.06); border: 1px solid var(--glass-line); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+      .btn-ghost:hover { background: rgba(255,255,255,.12); }
+      .btn svg { width: 18px; height: 18px; flex: none; }
+
+      /* Hero */
+      .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding: 110px 0 110px; }
+      .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; font-size: 13px; color: #e9d5ff;
+        background: rgba(124, 58, 237, .16); border: 1px solid rgba(167, 139, 250, .3); width: fit-content; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+      .dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 10px #4ade80; animation: blink 2s infinite; }
+      @keyframes blink { 50% { opacity: .35; } }
+      .hero h1 { font-size: clamp(44px, 8.5vw, 104px); line-height: .98; margin: 22px 0; font-weight: 700; max-width: 12ch; text-wrap: balance; }
+      .grad { background: linear-gradient(100deg, #f5d0fe 0%, #c084fc 35%, #67e8f9 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .lead { font-size: clamp(17px, 2vw, 21px); color: var(--muted); max-width: 560px; margin: 0 0 34px; }
+      .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+      .meta { margin-top: 16px; font-size: 14px; color: var(--faint); }
+      .meta a { color: #d8b4fe; }
+      .scroll-cue { position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+        color: var(--faint); display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap; }
+      .scroll-cue span { width: 1px; height: 42px; background: linear-gradient(var(--brand), transparent); animation: cue 2.2s ease-in-out infinite; transform-origin: top; }
+      @keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+      /* Journey chapters */
+      .chapter { min-height: 100vh; display: flex; align-items: center; padding: 80px 0; }
+      .chapter.right .card { margin-left: auto; }
+      .card { width: min(560px, 100%); padding: 38px; border-radius: 24px; background: var(--glass); border: 1px solid var(--glass-line);
+        backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
+        box-shadow: 0 30px 80px rgba(0,0,0,.35); }
+      .num { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .25em; color: var(--accent); text-transform: uppercase; }
+      .card h2 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.05; margin: 14px 0; }
+      .card p { color: var(--muted); margin: 0 0 22px; font-size: 17px; }
+      .points { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+      .points li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: #dcd7ea; }
+      .points svg { flex: none; width: 20px; height: 20px; margin-top: 2px; color: var(--accent); }
+
+      /* Reveal on scroll (only when JS is running) */
+      html.js .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
+      html.js .reveal.in { opacity: 1; transform: none; }
+      .hero .reveal:nth-child(2) { transition-delay: .08s; }
+      .hero .reveal:nth-child(3) { transition-delay: .16s; }
+      .hero .reveal:nth-child(4) { transition-delay: .24s; }
+      .hero .reveal:nth-child(5) { transition-delay: .32s; }
+
+      /* Chapter rail */
+      .rail { position: fixed; right: 26px; top: 50%; transform: translateY(-50%); z-index: 9; display: flex; flex-direction: column; gap: 14px; }
+      .rail a { display: flex; align-items: center; justify-content: flex-end; gap: 10px; text-decoration: none; color: var(--faint); font-size: 12px; letter-spacing: .08em; }
+      .rail a i { width: 8px; height: 8px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4); transition: all .3s; }
+      .rail a span { opacity: 0; transform: translateX(6px); transition: all .3s; }
+      .rail a:hover span { opacity: 1; transform: none; }
+      @media (min-width: 1360px) { .rail a.active span { opacity: 1; transform: none; } }
+      .rail a.active { color: #fff; }
+      .rail a.active i { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 12px var(--accent); transform: scale(1.3); }
+
+      /* Downloads */
+      .downloads { min-height: 100vh; padding: 120px 0 60px; display: flex; flex-direction: column; justify-content: center; }
+      .downloads h2 { font-size: clamp(36px, 6vw, 68px); line-height: 1.02; margin: 0 0 12px; text-align: center; }
+      .downloads .sub { text-align: center; color: var(--muted); margin: 0 auto 40px; max-width: 520px; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+      .dl { display: flex; flex-direction: column; gap: 6px; padding: 24px; border-radius: 20px; text-decoration: none; background: var(--glass);
+        border: 1px solid var(--glass-line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: transform .25s, border-color .25s, box-shadow .25s; }
+      .dl:hover { transform: translateY(-4px); border-color: rgba(167,139,250,.55); box-shadow: 0 20px 50px rgba(124,58,237,.25); }
+      .dl.recommended { border-color: rgba(34,211,238,.5); box-shadow: 0 0 0 1px rgba(34,211,238,.25), 0 20px 50px rgba(34,211,238,.12); }
+      .dl .icon { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+      .dl svg { width: 30px; height: 30px; }
+      .dl b { font-size: 18px; font-family: 'Space Grotesk', sans-serif; }
+      .dl small { color: var(--faint); font-size: 13px; }
+      .dl .go { margin-top: 14px; font-weight: 600; color: #d8b4fe; font-size: 14px; }
+      .tag { display: none; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; background: rgba(34,211,238,.15); color: #a5f3fc; }
+      .dl.recommended .tag { display: inline-block; }
+      .help { margin-top: 26px; padding: 20px 24px; border-radius: 18px; background: rgba(20,16,34,.6); border: 1px solid var(--glass-line); color: var(--muted); font-size: 14.5px;
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+      .help summary { cursor: pointer; color: var(--fg); font-weight: 600; }
+      .help ul { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 8px; }
+      .help b { color: var(--fg); }
+
+      footer { padding: 30px 0 40px; color: var(--faint); font-size: 13px; text-align: center; }
+      footer a { color: var(--muted); }
+
+      @media (max-width: 760px) {
+        .rail { display: none; }
+        .card { padding: 26px; border-radius: 20px; }
+        .chapter { min-height: 90vh; }
+        .nav .btn span { display: none; }
+        .hero .cta .btn { flex: 1 1 100%; justify-content: center; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        html.js .reveal { opacity: 1; transform: none; transition: none; }
+        .scroll-cue span, .dot { animation: none; }
+      }
     </style>
+    <script>document.documentElement.classList.add('js')</script>
   </head>
   <body>
-    <div class="wrap">
-      <header><div class="logo">✦</div> PulsePilot</header>
-      <section class="hero">
-        <h1>Your AI marketing co-pilot</h1>
-        <p class="lead">Write and schedule posts for every network in minutes, see what people say about your brand and competitors, and get AI-picked ideas that grow your audience.</p>
-        <a id="primary" class="btn" href="#downloads">Download PulsePilot</a>
-        <div class="other" id="primary-note">Free to download · Windows, Mac &amp; Linux</div>
+    <canvas id="scene" aria-hidden="true"></canvas>
+    <div class="veil"></div>
+
+    <header>
+      <div class="wrap nav">
+        <a class="logo" href="#top">
+          <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h4l2.5-6 4 11 2.5-5H21"/></svg></span>
+          PulsePilot
+        </a>
+        <a class="btn btn-ghost" href="#download" aria-label="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg><span>Download</span></a>
+      </div>
+    </header>
+
+    <nav class="rail" aria-label="Sections">
+      <a href="#top" data-target="top"><span>Start</span><i></i></a>
+      <a href="#create" data-target="create"><span>Create</span><i></i></a>
+      <a href="#schedule" data-target="schedule"><span>Schedule</span><i></i></a>
+      <a href="#listen" data-target="listen"><span>Listen</span><i></i></a>
+      <a href="#grow" data-target="grow"><span>Grow</span><i></i></a>
+      <a href="#download" data-target="download"><span>Download</span><i></i></a>
+    </nav>
+
+    <main>
+      <section class="hero wrap" id="top">
+        <div class="eyebrow reveal"><span class="dot"></span> Early access · Free download</div>
+        <h1 class="reveal">Your AI <span class="grad">marketing co-pilot.</span></h1>
+        <p class="lead reveal">Write once and post everywhere. Hear what people say about you and your competitors. Turn it into posts that grow your audience, with AI doing the heavy lifting.</p>
+        <div class="cta reveal">
+          <a id="primary" class="btn btn-primary" href="#download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>
+            <span id="primary-label">Download PulsePilot</span>
+          </a>
+          <a class="btn btn-ghost" href="#create">See how it works</a>
+        </div>
+        <div class="meta reveal" id="primary-note">Windows · Mac · Linux</div>
+        <a class="scroll-cue" href="#create" aria-label="Scroll to begin">Begin the journey<span></span></a>
       </section>
 
-      <section class="grid">
-        <div class="card"><h3>Create &amp; schedule</h3><p>AI writes platform-perfect posts and images that show your real product. Publish now or schedule.</p></div>
-        <div class="card"><h3>Mentions &amp; trends</h3><p>Track your brand and competitors across news, Reddit, Bluesky and more - only the posts that matter.</p></div>
-        <div class="card"><h3>Grow with AI</h3><p>Find viral post ideas from your best performers and what's trending right now.</p></div>
-        <div class="card"><h3>Your blog too</h3><p>Generate SEO articles and publish straight to WordPress, Shopify, Webflow and more.</p></div>
+      <section class="chapter wrap right" id="create">
+        <div class="card reveal">
+          <div class="num">01 · Create</div>
+          <h2>Write once.<br />Post everywhere.</h2>
+          <p>Describe your idea and PulsePilot writes the right version for every network, in your brand's voice, with images that show your real product.</p>
+          <ul class="points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Posts tailored for LinkedIn, Instagram, Facebook, X, Threads and more</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Images featuring your product or website, not generic AI art</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Use the AI you prefer: Claude, ChatGPT, Gemini and more</li>
+          </ul>
+        </div>
       </section>
 
-      <section class="downloads" id="downloads">
-        <div class="row"><span><b>Windows</b> 10 / 11 (64-bit)</span><a data-file="PulsePilot-Setup-x64.exe" href="#">Download .exe</a></div>
-        <div class="row"><span><b>Mac</b> with Apple chip (M1 or newer)</span><a data-file="PulsePilot-mac-arm64.dmg" href="#">Download .dmg</a></div>
-        <div class="row"><span><b>Mac</b> with Intel chip</span><a data-file="PulsePilot-mac-x64.dmg" href="#">Download .dmg</a></div>
-        <div class="row"><span><b>Linux</b> (AppImage)</span><a data-file="PulsePilot-linux.AppImage" href="#">Download .AppImage</a></div>
-        <div class="row note">PulsePilot updates itself automatically. Your data, posts and API keys stay on your computer.</div>
+      <section class="chapter wrap" id="schedule">
+        <div class="card reveal">
+          <div class="num">02 · Schedule</div>
+          <h2>Publish while<br />you sleep.</h2>
+          <p>Plan a month of content in an afternoon. Arrange posts on your calendar and PulsePilot publishes them on time, to every account you connect.</p>
+          <ul class="points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>One click from idea to published, or scheduled for later</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Several accounts per network, ideal for agencies and multi-brand teams</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>SEO blog articles, published straight to your website</li>
+          </ul>
+        </div>
       </section>
 
-      <footer>
-        © 2026 Automatorr · <a href="https://automatorr.com/privacy">Privacy</a> · <a href="https://automatorr.com/terms">Terms</a> · <a href="mailto:support@automatorr.com">Support</a>
-      </footer>
-    </div>
+      <section class="chapter wrap right" id="listen">
+        <div class="card reveal">
+          <div class="num">03 · Listen</div>
+          <h2>Hear every<br />conversation.</h2>
+          <p>Know when people talk about you, your competitors or your industry, across news, Reddit, Bluesky and more. Only the posts that matter.</p>
+          <ul class="points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Set up in one click from your brand profile</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>AI filters out look-alike names and reads the mood of every post</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Trend reports that show what's rising and what to say about it</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="chapter wrap" id="grow">
+        <div class="card reveal">
+          <div class="num">04 · Grow</div>
+          <h2>Turn insight<br />into reach.</h2>
+          <p>PulsePilot learns what works for you, pairs it with what's trending right now, and hands you ready-to-post ideas with the best shot at taking off.</p>
+          <ul class="points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Viral opportunity finder based on your own results</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Best times to post and polished reports in one click</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Friendly auto-replies and follow-ups you stay in control of</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="downloads wrap" id="download">
+        <h2 class="reveal">Start your <span class="grad">journey.</span></h2>
+        <p class="sub reveal">Free download. Your posts, data and keys stay on your computer, and PulsePilot updates itself automatically.</p>
+        <div class="grid reveal">
+          <a class="dl" data-os="windows" data-file="PulsePilot-Setup-x64.exe" href="#download">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="#7dd3fc"><path d="M3 5.5 10.5 4.4v7.1H3V5.5zm8.5-1.2L21 3v8.5h-9.5V4.3zM3 12.5h7.5v7.1L3 18.5v-6zm8.5 0H21V21l-9.5-1.3v-7.2z"/></svg><span class="tag">Your computer</span></span>
+            <b>Windows</b><small>Windows 10 &amp; 11 · 64-bit</small><span class="go">Download .exe →</span>
+          </a>
+          <a class="dl" data-os="mac" data-file="PulsePilot-mac-arm64.dmg" href="#download">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="#f5f5f5"><path d="M16.4 12.6c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.4-.9-2.4-4.1zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg><span class="tag">Your computer</span></span>
+            <b>Mac · Apple chip</b><small>M1, M2, M3, M4 and newer</small><span class="go">Download .dmg →</span>
+          </a>
+          <a class="dl" data-file="PulsePilot-mac-x64.dmg" href="#download">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="#a3a3a3"><path d="M16.4 12.6c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.8c1.3 0 2.1-1.2 2.9-2.4.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.4-.9-2.4-4.1zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg></span>
+            <b>Mac · Intel chip</b><small>Older Macs (before late 2020)</small><span class="go">Download .dmg →</span>
+          </a>
+          <a class="dl" data-os="linux" data-file="PulsePilot-linux.AppImage" href="#download">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fde68a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2 0-3 1.8-3 4 0 1.5-.6 2.6-1.6 4.1C6 13.2 5 15 5.6 17c.4 1.3 1.6 2 3 2.4.9.3 1.7 1.6 3.4 1.6s2.5-1.3 3.4-1.6c1.4-.4 2.6-1.1 3-2.4.6-2-.4-3.8-1.8-5.9C15.6 9.6 15 8.5 15 7c0-2.2-1-4-3-4z"/><circle cx="10.5" cy="7.5" r=".6" fill="#fde68a"/><circle cx="13.5" cy="7.5" r=".6" fill="#fde68a"/></svg><span class="tag">Your computer</span></span>
+            <b>Linux</b><small>AppImage · most distributions</small><span class="go">Download .AppImage →</span>
+          </a>
+        </div>
+        <details class="help reveal">
+          <summary>Opening PulsePilot for the first time</summary>
+          <ul>
+            <li><b>Windows:</b> if you see "Windows protected your PC", click <b>More info</b> → <b>Run anyway</b>. This early-access version isn't code-signed yet.</li>
+            <li><b>Mac:</b> drag PulsePilot into Applications and open it. If macOS says it can't be opened, go to <b>System Settings → Privacy &amp; Security</b> and click <b>Open Anyway</b>.</li>
+            <li><b>Linux:</b> right-click the AppImage → Properties → allow running it as a program, then double-click it.</li>
+          </ul>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">© 2026 Automatorr · PulsePilot early access · <a href="mailto:support@automatorr.com">support@automatorr.com</a></div>
+    </footer>
 
     <script>
-      // CHANGE these to your GitHub releases repository (same as electron-builder.yml "publish").
+      // Installers live on GitHub Releases; /latest/ always points at the newest version.
       var OWNER = 'AbishaiBajaj'
       var REPO = 'pulsepilot-releases'
       var base = 'https://github.com/' + OWNER + '/' + REPO + '/releases/latest/download/'
       document.querySelectorAll('a[data-file]').forEach(function (a) { a.href = base + a.getAttribute('data-file') })
 
-      // Point the big button at the right installer for this computer.
+      // The big button downloads the right installer for this computer.
       var ua = navigator.userAgent
-      var file = null, label = null
-      if (/Windows/i.test(ua)) { file = 'PulsePilot-Setup-x64.exe'; label = 'Download for Windows' }
-      else if (/Macintosh|Mac OS X/i.test(ua)) { file = 'PulsePilot-mac-arm64.dmg'; label = 'Download for Mac' }
-      else if (/Linux/i.test(ua) && !/Android/i.test(ua)) { file = 'PulsePilot-linux.AppImage'; label = 'Download for Linux' }
-      if (file) {
-        var btn = document.getElementById('primary')
-        btn.href = base + file
-        btn.textContent = label
-        document.getElementById('primary-note').innerHTML = 'Free · <a href="#downloads">Other systems &amp; Intel Mac</a>'
+      var phone = /iPhone|iPad|iPod|Android|Mobile/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1)
+      var os = phone ? null : /Windows/i.test(ua) ? 'windows' : /Macintosh|Mac OS X/i.test(ua) ? 'mac' : /Linux|X11/i.test(ua) ? 'linux' : null
+      var card = os && document.querySelector('.dl[data-os="' + os + '"]')
+      if (card) {
+        card.classList.add('recommended')
+        document.getElementById('primary').href = card.href
+        document.getElementById('primary-label').textContent = 'Download for ' + { windows: 'Windows', mac: 'Mac', linux: 'Linux' }[os]
+        document.getElementById('primary-note').innerHTML = 'Free · early access · <a href="#download">Other systems &amp; Intel Macs</a>'
       }
+      if (phone) {
+        document.getElementById('primary-label').textContent = 'Get it for your computer'
+        document.getElementById('primary-note').textContent = 'PulsePilot runs on Windows, Mac and Linux. Open this page on your computer to install it.'
+      }
+
+      // Reveal content as it scrolls into view.
+      var reveals = document.querySelectorAll('.reveal')
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } })
+        }, { threshold: 0.15 })
+        reveals.forEach(function (el) { io.observe(el) })
+      } else {
+        reveals.forEach(function (el) { el.classList.add('in') })
+      }
+
+      // Highlight the current chapter in the side rail.
+      var links = document.querySelectorAll('.rail a')
+      var sections = Array.prototype.map.call(links, function (a) { return document.getElementById(a.getAttribute('data-target')) })
+      function markActive() {
+        var mid = window.scrollY + window.innerHeight * 0.5
+        var current = 0
+        sections.forEach(function (s, i) { if (s && s.offsetTop <= mid) current = i })
+        links.forEach(function (a, i) { a.classList.toggle('active', i === current) })
+      }
+      window.addEventListener('scroll', markActive, { passive: true })
+      markActive()
     </script>
+    <script type="module" src="scene.js"></script>
   </body>
 </html>
